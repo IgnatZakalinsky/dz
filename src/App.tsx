@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {HashRouter, Route, Switch} from "react-router-dom";
+import Monday from "./pages/Monday";
+import Tuesday from "./pages/Tuesday";
+import NavBar from "./main/NavBar";
+import Wednesday from "./pages/Wednesday";
+import Thursday from "./pages/Thursday";
+import Friday from "./pages/Friday";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <div className="App">
+            <HashRouter>
+                <NavBar/>
+                <Switch>
+                    <Route path={'/'} exact render={() => <Monday/>}/>
+                    <Route path={'/monday'} render={() => <Monday/>}/>
+                    <Route path={'/tuesday'} render={() => <Tuesday/>}/>
+                    <Route path={'/wednesday'} render={() => <Wednesday/>}/>
+                    <Route path={'/thursday'} render={() => <Thursday/>}/>
+                    <Route path={'/friday'} render={() => <Friday/>}/>
+                    <Route render={() => <div>404 error page</div>}/>
+                </Switch>
+            </HashRouter>
+        </div>
+    );
+};
 
 export default App;
